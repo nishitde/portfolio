@@ -1,8 +1,9 @@
 #homeContainer {
   padding-top: 3%;
+  padding-bottom: 3%;
 }
 
-​ .row {
+​.row {
   display: flex;
 }
 

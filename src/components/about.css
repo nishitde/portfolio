@@ -1,0 +1,26 @@
+.outerContainer {
+  background-color: #dcdcdc;
+}
+
+#aboutContainer {
+  padding-top: 1%;
+  padding-bottom: 3%;
+}
+
+#collegeText {
+  padding-left: 25px;
+  position: relative;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.aboutText {
+  position: absolute;
+  top: 20%;
+}
