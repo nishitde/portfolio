@@ -11,7 +11,9 @@ class Navbar extends Component {
         <div class="container">
           <ul class="nav navbar-nav">
             <ReactBootStrap.Navbar.Brand href="#home">
-              React-Bootstrap
+              <h1>
+                <span id="logoText">NISHIT</span>
+              </h1>
             </ReactBootStrap.Navbar.Brand>
           </ul>
           <ul class="nav navbar-nav navbar-right" pullRight>

@@ -1,0 +1,21 @@
+#homeContainer {
+  padding-top: 3%;
+}
+
+​ .row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+#text_column {
+  position: relative;
+  padding-left: 15px;
+}
+
+.textColumn {
+  position: absolute;
+  top: 25%;
+}
