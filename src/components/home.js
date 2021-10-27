@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as ReactBootStrap from "react-bootstrap";
 import programmer from "../img/coder.svg";
 import "./home.css";
 

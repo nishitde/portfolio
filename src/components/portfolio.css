@@ -1,0 +1,29 @@
+#portfolioContainer {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+#cardColumn {
+  padding: 25px;
+}
+
+#cardBody {
+  position: relative;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#cardButton {
+  position: absolute;
+  bottom: 20px;
+  margin-left: 175px;
+  background-color: #ba68c8;
+  border-color: #ba68c8;
+}
+
+#githubButton {
+  background-color: #fc8370;
+  border-color: #fc8370;
+  margin-top: 10px;
+  width: 100px;
+}

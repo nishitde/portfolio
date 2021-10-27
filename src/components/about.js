@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as ReactBootStrap from "react-bootstrap";
 import university from "../img/college.svg";
 import "./about.css";
 
