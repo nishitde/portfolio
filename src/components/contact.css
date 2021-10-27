@@ -1,0 +1,33 @@
+.portfolioOuterContainer {
+  background-color: #dcdcdc;
+}
+
+.contactCardBody {
+  position: relative;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.firstNameText {
+  padding-right: 5px;
+}
+
+.lastNameText {
+  padding-left: 5px;
+}
+
+#contactContainer {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+#firstLineInputs {
+  padding: 0px 15px;
+}
+
+#contactCardButton {
+  background-color: #fc8370;
+  border-color: #fc8370;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  width: 100%;
+}

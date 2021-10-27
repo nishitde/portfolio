@@ -14,7 +14,14 @@ class Portfolio extends Component {
         </h1>
         <div class="row">
           <div class="column" id="cardColumn">
-            <Card style={{ height: "29rem" }}>
+            <Card
+              style={{
+                height: "29rem",
+                borderRadius: "10px",
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09)",
+              }}
+            >
               <Card.Header>
                 <span style={{ color: "#c1549c" }}>LOAN PREDICTION SYSTEM</span>
               </Card.Header>
@@ -55,7 +62,14 @@ class Portfolio extends Component {
             </Card>
           </div>
           <div class="column" id="cardColumn">
-            <Card style={{ height: "29rem" }}>
+            <Card
+              style={{
+                height: "29rem",
+                borderRadius: "10px",
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09)",
+              }}
+            >
               <Card.Header>
                 <span style={{ color: "#c1549c" }}>
                   SIMILAR FACE CLUSTERING
@@ -93,7 +107,14 @@ class Portfolio extends Component {
             </Card>
           </div>
           <div class="column" id="cardColumn">
-            <Card style={{ height: "24rem" }}>
+            <Card
+              style={{
+                height: "24rem",
+                borderRadius: "10px",
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09)",
+              }}
+            >
               <Card.Header>
                 <span style={{ color: "#c1549c" }}>
                   IMAGE CLASSIFICATION USING OPENCV
@@ -132,7 +153,14 @@ class Portfolio extends Component {
             </Card>
           </div>
           <div class="column" id="cardColumn">
-            <Card style={{ height: "24rem" }}>
+            <Card
+              style={{
+                height: "24rem",
+                borderRadius: "10px",
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09)",
+              }}
+            >
               <Card.Header>
                 <span style={{ color: "#c1549c" }}>ONLINE JOB PORTAL</span>
               </Card.Header>
