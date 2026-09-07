@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { site } from "@/content/site";
 import { socials } from "@/content/socials";
 import styles from "../deck.module.css";
@@ -14,7 +15,12 @@ export default function Intro() {
           {site.name}
         </h1>
         <p className={styles.heroSub} data-reveal="1">
-          {site.heroSub}
+          {site.heroSub.map((part, i) => (
+            <Fragment key={part}>
+              {i > 0 ? " · " : null}
+              <span className={styles.heroSubPart}>{part}</span>
+            </Fragment>
+          ))}
         </p>
         <div className={styles.ctaRow}>
           <a href={site.resume.href} className={styles.btn} data-magnetic="1">

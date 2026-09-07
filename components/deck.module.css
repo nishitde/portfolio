@@ -250,10 +250,14 @@
   margin: 0;
 }
 
+.heroSubPart {
+  white-space: nowrap;
+}
+
 .heroSub {
   font-family: var(--font-mono), monospace;
   font-size: 12px;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--hero-sub-ls);
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -403,6 +407,10 @@
   background: var(--row-hover);
 }
 
+.contactLabel {
+  composes: meta;
+}
+
 .contactHandle {
   font-family: var(--font-grotesk), sans-serif;
   font-weight: 700;
@@ -412,15 +420,30 @@
 
 /* ---------- 02 timeline: cards (small screens) ---------- */
 
-.tlCards {
+/* Phone-only horizontal carousel. Hidden here; switched on in the
+   small-screen block, where it replaces the table. */
+.tlCarousel {
   display: none;
-  grid-template-columns: 1fr;
+}
+
+.tlCards {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  /* Under a full card so the next one peeks and signals the swipe. */
+  grid-auto-columns: min(78%, 300px);
   gap: 18px;
-  flex: 1;
-  align-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.tlCards::-webkit-scrollbar {
+  display: none;
 }
 
 .tlCard {
@@ -431,7 +454,42 @@
   border-top: var(--rule);
   padding-top: 20px;
   border-radius: var(--radius);
+  scroll-snap-align: start;
   transition: var(--tr);
+}
+
+/* Position readout for the carousel, mirroring the desktop rail. */
+.tlDots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tlDot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.tlDotBar {
+  display: block;
+  width: 14px;
+  height: 2px;
+  background: var(--rail-idle);
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.tlDotBarActive {
+  width: 26px;
+  background: var(--accent);
 }
 
 .tlCard:hover {
@@ -509,7 +567,65 @@
     display: none;
   }
 
+  .tlCarousel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  /* Cards stretch to fill the section, so each reads as its own panel
+     with the duration pinned to the bottom. */
   .tlCards {
-    display: grid;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Too narrow for the desktop left/right split -- the two halves of the
+     timeline footer alone exceed the line -- so each item gets its own
+     row, centred under the full-width rule rather than stacked ragged
+     against the left edge. */
+  .slideFoot {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .footLinks {
+    justify-content: center;
+  }
+
+  .slideHead {
+    gap: 12px;
+  }
+
+  /* The design keeps a fixed 110px label column at every width, which
+     leaves too little room for the longest handle on a phone and breaks
+     it mid-word. Stack the label over the handle instead and centre the
+     arrow across both rows. */
+  .contactRow {
+    grid-template-columns: minmax(0, 1fr) 24px;
+    grid-template-areas:
+      "label  icon"
+      "handle icon";
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: center;
+  }
+
+  .contactRow .contactLabel {
+    grid-area: label;
+  }
+
+  .contactRow .contactHandle {
+    grid-area: handle;
+  }
+
+  .contactRow .contactIcon {
+    grid-area: icon;
+    align-self: center;
   }
 }

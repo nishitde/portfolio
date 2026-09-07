@@ -67,6 +67,12 @@ export function useDeckMotion(ids: readonly SectionId[]) {
       const back = e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key === "PageUp";
       if (!forward && !back) return;
 
+      // Left/right belong to the timeline carousel when focus is inside it,
+      // rather than paging the whole deck.
+      const target = e.target as Element | null;
+      const horizontal = e.key === "ArrowLeft" || e.key === "ArrowRight";
+      if (horizontal && target?.closest?.("[data-carousel]")) return;
+
       e.preventDefault();
       setActive((current) => {
         const next = Math.min(ids.length - 1, Math.max(0, current + (forward ? 1 : -1)));

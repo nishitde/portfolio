@@ -5,7 +5,9 @@ export const site = {
   timezone: "UTC−6",
   url: "https://nishitde.com",
   tagline: "Five years of shipping software that behaves itself.",
-  heroSub: "Software development engineer · backend & platform · Nashville, TN",
+  /* Rendered joined by "·". Each part stays on one line, so the string only
+     ever breaks at a separator rather than orphaning a word. */
+  heroSub: ["Software development engineer", "backend & platform", "Nashville, TN"],
   description:
     "Nishit De is a software development engineer working on backend and platform systems in Nashville, TN.",
   resume: {

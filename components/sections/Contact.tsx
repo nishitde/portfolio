@@ -34,7 +34,7 @@ export default function Contact() {
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener noreferrer" : undefined}
               >
-                <span className={styles.meta}>{s.name}</span>
+                <span className={styles.contactLabel}>{s.name}</span>
                 <span className={styles.contactHandle}>{s.handle}</span>
                 <span className={styles.contactIcon} aria-hidden="true">
                   ↗

@@ -31,6 +31,7 @@
   --contact-gap: clamp(32px, 6vw, 96px);
   --contact-cols: repeat(auto-fit, minmax(320px, 1fr));
 
+  --hero-sub-ls: 0.16em;
   --nav-fs: 12px;
   --nav-ls: 0.16em;
   --nav-gap: 24px;
@@ -86,7 +87,7 @@
     --pad-top: 96px;
     --pad-bottom: 48px;
     --gap-slide: 22px;
-    --slide-min-h: auto;
+    --slide-min-h: 100dvh;
     --contact-gap: 28px;
     --contact-cols: 1fr;
 
@@ -98,14 +99,23 @@
     --foot-justify: flex-start;
     --foot-links-gap: 16px;
 
+    --hero-sub-ls: 0.1em;
+
     --fs-display: clamp(33px, 13.89vw, 180px);
-    --fs-lead: clamp(19px, 4.03vw, 52px);
     --fs-h2: clamp(25px, 6.39vw, 83px);
-    --fs-head-note: clamp(14px, 2.64vw, 34px);
-    --fs-contact-lead: clamp(16px, 3.33vw, 43px);
-    --fs-handle: clamp(11px, 1.67vw, 22px);
-    --fs-card-title: clamp(11px, 1.67vw, 22px);
     --fs-years: clamp(25px, 5vw, 65px);
+
+    /* The design derives small-screen type by scaling every clamp minimum
+       by 0.62. That works for display sizes, which stay large through the
+       vw term, but it drives text that was already near body size below
+       it -- a 11px card title above its own 16px description. These five
+       minimums are raised to keep the hierarchy the desktop layout has.
+       Maximums and the vw terms are the design's own. */
+    --fs-lead: clamp(24px, 4.03vw, 52px);
+    --fs-head-note: clamp(17px, 2.64vw, 34px);
+    --fs-contact-lead: clamp(19px, 3.33vw, 43px);
+    --fs-handle: clamp(17px, 1.67vw, 22px);
+    --fs-card-title: clamp(19px, 1.67vw, 22px);
   }
 }
 
@@ -141,12 +151,6 @@ ol {
 html {
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
-}
-
-@media (max-width: 759px) {
-  html {
-    scroll-snap-type: none;
-  }
 }
 
 body {

@@ -1,4 +1,5 @@
 import { timeline } from "@/content/timeline";
+import TimelineCards from "./TimelineCards";
 import styles from "../deck.module.css";
 
 const columns = ["Period", "Length", "Place", "Role"];
@@ -45,28 +46,7 @@ export default function Timeline() {
         </ul>
       </div>
 
-      <ul className={styles.tlCards}>
-        {timeline.map((entry, i) => {
-          const current = i === timeline.length - 1;
-          return (
-            <li key={entry.place} className={styles.tlCard} data-reveal="1">
-              <div className={current ? styles.tlPeriodCurrent : styles.tlPeriod}>
-                {entry.period.toUpperCase()}
-              </div>
-              <div className={current ? styles.tlCardYearsCurrent : styles.tlCardYears}>
-                {entry.years}
-              </div>
-              <div className={styles.tlCardTitle}>{entry.place}</div>
-              <div className={styles.tlCity}>{entry.city}</div>
-              <div className={styles.tlCardBody}>{entry.note}</div>
-              <div className={styles.tlCardFoot}>
-                {entry.length.toUpperCase()}
-                {current ? " · CURRENT" : ""}
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <TimelineCards />
 
       <div className={styles.slideFoot}>
         <div>02 / 04 — Timeline</div>
