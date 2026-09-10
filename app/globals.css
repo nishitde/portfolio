@@ -79,15 +79,15 @@
   }
 }
 
-/* Small: padding x0.42 (floor 20), type minimums x0.62. Sections stop
-   being forced to a full viewport, and snap is off. */
+/* Small: padding x0.42 (floor 20). Display type keeps the design's x0.62
+   minimums; the editorial and UI type below is floored instead -- see the
+   note there. */
 @media (max-width: 759px) {
   :root {
     --pad: 24px;
     --pad-top: 96px;
     --pad-bottom: 48px;
     --gap-slide: 22px;
-    --slide-min-h: 100dvh;
     --contact-gap: 28px;
     --contact-cols: 1fr;
 
@@ -96,7 +96,6 @@
     --nav-gap: 12px;
     --foot-fs: 10px;
     --foot-gap: 10px;
-    --foot-justify: flex-start;
     --foot-links-gap: 16px;
 
     --hero-sub-ls: 0.1em;
@@ -105,12 +104,13 @@
     --fs-h2: clamp(25px, 6.39vw, 83px);
     --fs-years: clamp(25px, 5vw, 65px);
 
-    /* The design derives small-screen type by scaling every clamp minimum
-       by 0.62. That works for display sizes, which stay large through the
-       vw term, but it drives text that was already near body size below
-       it -- a 11px card title above its own 16px description. These five
-       minimums are raised to keep the hierarchy the desktop layout has.
-       Maximums and the vw terms are the design's own. */
+    /* The design scales every clamp minimum by 0.62, which suits display
+       type -- it stays large through the vw term -- but not text already
+       near body size: it produced an 11px card title above its own 16px
+       description. --fs-handle and --fs-card-title are floored at or above
+       the 17px body to keep that hierarchy; the three editorial sizes are
+       simply a gentler reduction than 0.62. Maximums and vw terms are the
+       design's own. */
     --fs-lead: clamp(24px, 4.03vw, 52px);
     --fs-head-note: clamp(17px, 2.64vw, 34px);
     --fs-contact-lead: clamp(19px, 3.33vw, 43px);

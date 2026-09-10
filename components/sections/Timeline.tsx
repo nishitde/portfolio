@@ -13,10 +13,10 @@ export default function Timeline() {
         </h2>
       </div>
 
-      {/* Wide screens: the five-column table. Narrow screens: the card
-          stack below. Both are rendered and swapped with `display`, so no
-          JavaScript is needed to pick one and the hidden layout stays out
-          of the accessibility tree. */}
+      {/* Wide screens: the five-column table. Narrow screens: the swipe
+          carousel below. Both are rendered and swapped with `display`, so
+          no JavaScript is needed to pick one and the hidden layout stays
+          out of the accessibility tree. */}
       <div className={styles.tlTable} data-reveal="1">
         <div className={styles.tlHeadRow} aria-hidden="true">
           {columns.map((c) => (

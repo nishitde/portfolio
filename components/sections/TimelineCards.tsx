@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { timeline } from "@/content/timeline";
+import { prefersReducedMotion } from "@/lib/useDeckMotion";
 import styles from "../deck.module.css";
 
 /**
@@ -17,18 +18,21 @@ export default function TimelineCards() {
     const el = scroller.current;
     if (!el) return;
 
+    // The card list is static, so it is built once rather than per event.
+    const cards = Array.from(el.children) as HTMLElement[];
+
     const onScroll = () => {
-      const cards = Array.from(el.children) as HTMLElement[];
+      const left = el.scrollLeft;
       let nearest = 0;
       let best = Infinity;
       cards.forEach((card, i) => {
-        const distance = Math.abs(card.offsetLeft - el.scrollLeft);
+        const distance = Math.abs(card.offsetLeft - left);
         if (distance < best) {
           best = distance;
           nearest = i;
         }
       });
-      setActive((prev) => (prev === nearest ? prev : nearest));
+      setActive(nearest);
     };
 
     onScroll();
@@ -44,9 +48,7 @@ export default function TimelineCards() {
     // vertically and fight the section snap.
     el.scrollTo({
       left: card.offsetLeft,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
     });
   };
 

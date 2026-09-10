@@ -12,7 +12,6 @@
   gap: var(--gap-slide);
   padding: var(--pad-top) var(--pad) var(--pad-bottom);
   scroll-snap-align: start;
-  border-top: var(--rule);
   position: relative;
 }
 
@@ -427,6 +426,10 @@
 }
 
 .tlCards {
+  /* Load-bearing, not decoration: it makes this element the offsetParent of
+     the cards, so TimelineCards can compare card.offsetLeft against
+     scrollLeft directly. Without it the offsets pick up the section's
+     padding and every dot scrolls short of its card. */
   position: relative;
   display: grid;
   grid-auto-flow: column;
@@ -436,6 +439,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  /* Only ever rendered inside .tlCarousel, which is display:none above
+     759px, so the fill sits here rather than in the small-screen block. */
+  flex: 1;
+  min-height: 0;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
@@ -458,7 +465,12 @@
   transition: var(--tr);
 }
 
-/* Position readout for the carousel, mirroring the desktop rail. */
+.tlCard:hover {
+  border-top-color: var(--accent);
+}
+
+/* Position readout for the carousel. Same mark as the desktop rail, so it
+   shares the rail's bar rules rather than restating them. */
 .tlDots {
   display: flex;
   justify-content: center;
@@ -478,22 +490,11 @@
 }
 
 .tlDotBar {
-  display: block;
-  width: 14px;
-  height: 2px;
-  background: var(--rail-idle);
-  transition:
-    width 0.25s ease,
-    background 0.25s ease;
+  composes: railBar;
 }
 
 .tlDotBarActive {
-  width: 26px;
-  background: var(--accent);
-}
-
-.tlCard:hover {
-  border-top-color: var(--accent);
+  composes: railBarActive;
 }
 
 .tlCardYears {
@@ -555,10 +556,10 @@
 }
 
 /* ---------- small screens (<760) ----------
-   The timeline becomes a stack of cards, and the fixed rail and the nav
+   The timeline becomes a swipe carousel, and the fixed rail and the nav
    counter give way to the sticky nav. Both timeline layouts are in the
-   DOM and swapped with `display`, so the choice needs no JavaScript and
-   the hidden one stays out of the accessibility tree. */
+   DOM and swapped with `display`, so which one shows needs no JavaScript
+   and the hidden one stays out of the accessibility tree. */
 
 @media (max-width: 759px) {
   .rail,
@@ -573,13 +574,6 @@
     gap: 18px;
     flex: 1;
     min-width: 0;
-    min-height: 0;
-  }
-
-  /* Cards stretch to fill the section, so each reads as its own panel
-     with the duration pinned to the bottom. */
-  .tlCards {
-    flex: 1;
     min-height: 0;
   }
 

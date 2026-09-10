@@ -10,7 +10,7 @@ const REVEAL_THRESHOLD = 0.12;
 const STAGGER_MS = 60;
 const STAGGER_GROUP = 5;
 
-function prefersReducedMotion() {
+export function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 

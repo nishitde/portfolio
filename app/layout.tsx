@@ -34,19 +34,19 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name} — ${site.role}`,
+  title: site.name,
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    title: `${site.name} — ${site.role}`,
+    title: site.name,
     description: site.description,
     siteName: site.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: site.name,
     description: site.description,
   },
 };

@@ -1,6 +1,5 @@
 export const site = {
   name: "Nishit De",
-  role: "Software Development Engineer",
   location: "Nashville, TN",
   timezone: "UTC−6",
   url: "https://nishitde.com",
