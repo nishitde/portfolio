@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Anton, Instrument_Serif, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -61,7 +62,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${grotesk.variable} ${anton.variable} ${serif.variable} ${mono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
